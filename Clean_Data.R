@@ -1,4 +1,4 @@
-  # ====================================== #
+   # ====================================== #
   # =            Clean Data              =
   # =          Daniel Jiménez            =
   # =        Equipo de Producto          =
@@ -209,6 +209,7 @@ analytics$session%>%
 analytics$source%>%
   table()
 
+write.csv(analytics,"../../Output/analytics.csv")
 
 #### Demographic ####
 
@@ -243,6 +244,8 @@ Demografics$sessionsDuration<-as.numeric(Demografics$sessionsDuration)
 
 Demografics$sessionsDuration%>%
   summary()
+
+write.csv(Demografics,"../../Output/Demografics.csv")
 
 ### Parrilla ####
 
@@ -326,6 +329,7 @@ parrilla$start_date<-ymd_hms(parrilla$start_date)
 parrilla$support%>%
   table()
 
+write.csv(parrilla,"../../Output/parrilla.csv")
 
 ##### Participaciones ####
 ### adContent
@@ -441,9 +445,10 @@ s02<-sqldf("select medium, upper(medium) as Medio from participaciones")
 
 participaciones$medium<-s02$Medio
 
+write.csv(participaciones,"../../Output/participaciones.csv")
 
 ##### usersForClassification####
-
+userForClassification.csv->usersForClassification
 usersForClassification$date<-as.Date(usersForClassification$date)
 usersForClassification$avgSessionDuration<-as.numeric(usersForClassification$avgSessionDuration)
 usersForClassification$avgTimeOnPage<-as.numeric(usersForClassification$avgTimeOnPage)
@@ -462,6 +467,7 @@ usersForClassification$pageviews<-as.numeric(usersForClassification$pageviews)
 usersForClassification$userType<-as.factor(usersForClassification$userType)
 usersForClassification$day<-days(usersForClassification$day)
 
+write.csv(usersForClassification,"../../Output/usersForClassification.csv")
 
 
 #### Primer cruce
